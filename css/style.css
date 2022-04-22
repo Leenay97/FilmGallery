@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+header {
+    height: 50px;
+    background-color: #000;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+}
+
+.film-box {
+    height: 200px;
+    width: 80px;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(40px, -100px);
+    z-index: 1;
+    animation: moveRight 500ms;
+    float: right;
+}
+
+.film-box_img {
+    height: 200px;
+}
+
+.film-box_active {
+    left: auto;
+    right: 10%;
+    animation: moveLeft 500ms;
+    float: right;
+}
+
+.film-tape-bg::before {
+    position: absolute;
+    left: -90px;
+    background-size: 108px;
+    content: '';
+    height: 160px;
+    width: 90px;
+    background-image: url('/img/film-tape-end.png');
+    background-repeat: no-repeat;
+}
+
+.film-tape {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    height: 160px;
+    width: 0px;
+    transform: translateY(-65px);
+    z-index: 0;
+    animation: filmClose 500ms;
+}
+.film-tape-bg {
+    position: relative;
+    background-image: url('/img/film-tape-bg.png');
+    background-size: 18px;
+    background-repeat: repeat-x;
+    width: 100%;
+    height: 100%;   
+    opacity: 0.8;
+
+}
+.film-tape_active {
+    width: 70%;
+    right: 10%;
+    animation: filmOpen 500ms;
+    
+}
+
+@keyframes moveLeft {
+    from {
+        right: 50%;
+      }
+      to {
+        right: 10%;
+      }
+}
+@keyframes moveRight {
+    from {
+        right: 10%;
+      }
+      to {
+        right: 50%;
+      }
+}
+@keyframes filmOpen {
+    from {
+        right: 50%;
+        width: 0;
+      }
+      to {
+        right: 10%;
+        width: 70%;
+      }
+}
+@keyframes filmClose {
+    from {
+        right: 10%;
+        width: 70%;
+      }
+      to {
+        right: 50%;
+        width: 0;
+      }
+}
