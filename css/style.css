@@ -10,6 +10,12 @@
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 }
+html {
+    overflow: hidden;
+}
+body {
+    overflow: hidden;
+}
 
 header {
     height: 50px;
@@ -19,6 +25,20 @@ header {
 main {
     width: 100%;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.film-container {
+    position: relative;
+    width: 1200px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    
 }
 
 .film-box {
@@ -29,8 +49,9 @@ main {
     right: 50%;
     transform: translate(40px, -100px);
     z-index: 1;
-    animation: moveRight 500ms;
     float: right;
+    animation-timing-function: ease-in-out;
+    animation: moveRight 500ms;
 }
 
 .film-box_img {
@@ -40,13 +61,14 @@ main {
 .film-box_active {
     left: auto;
     right: 10%;
+    animation-timing-function: ease-in-out;
     animation: moveLeft 500ms;
     float: right;
 }
 
 .film-tape-bg::before {
     position: absolute;
-    left: -90px;
+    left: -89px;
     background-size: 108px;
     content: '';
     height: 160px;
@@ -59,10 +81,11 @@ main {
     position: absolute;
     top: 50%;
     right: 50%;
-    height: 160px;
+    height: 144px;
     width: 0px;
     transform: translateY(-65px);
     z-index: 0;
+    animation-timing-function: ease-in-out;
     animation: filmClose 500ms;
 }
 .film-tape-bg {
@@ -75,11 +98,60 @@ main {
     opacity: 0.8;
 
 }
+.film-tape-bg__shots {
+    display: flex;
+    width: 100%;
+    height: 100%;   
+    opacity: 0.8;
+    overflow: hidden;
+
+}
+.film-shot {
+    height: 94px;
+    opacity: 0.5;
+    align-self: center;
+    margin-right: 10px;
+}
 .film-tape_active {
-    width: 70%;
+    width: 80%;
     right: 10%;
+    animation-timing-function: ease-in-out;
     animation: filmOpen 500ms;
     
+}
+.film-tape_active-closed {
+    right: 10%;
+}
+
+.open-button {
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: #fff;
+    opacity: 0.3;
+    animation: showButton 300ms ease-in-out;
+}
+.button-container {
+    width: 1200px;
+    border-radius: 20px;
+    display: flex;
+    font-size: 14px;
+    font-weight: 600;
+    justify-content: center;
+}
+.button-hidden {
+    opacity: 0;
+    animation: hideButton 300ms ease-in-out;
+}
+
+.left-button, .right-button {
+    height: 40px;
+    width: 40px;
+    margin: 0 20px;
+    border-radius: 20px;
+    border: 1px solid #000;
 }
 
 @keyframes moveLeft {
@@ -100,21 +172,40 @@ main {
 }
 @keyframes filmOpen {
     from {
-        right: 50%;
         width: 0;
+        right: 50%;
       }
       to {
+        
         right: 10%;
-        width: 70%;
+        width: 80%;
       }
 }
 @keyframes filmClose {
     from {
+        width: 80%;
         right: 10%;
-        width: 70%;
       }
       to {
-        right: 50%;
         width: 0;
+        right: 50%;
+      }
+}
+
+@keyframes showButton {
+    from {
+        opacity: 0;
+      }
+      to {
+        opacity: 0.3;
+      }
+}
+
+@keyframes hideButton {
+    from {
+        opacity: 0.3;
+      }
+      to {
+        opacity: 0;
       }
 }
