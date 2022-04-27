@@ -14,7 +14,12 @@ html {
     overflow: hidden;
 }
 body {
+    width: 100%;
+    min-height: 100vh;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 header {
@@ -29,6 +34,7 @@ main {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    flex-grow: 1;
 }
 
 .film-container {
@@ -38,6 +44,7 @@ main {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    margin-bottom: 30px;
     
 }
 
@@ -146,12 +153,25 @@ main {
     animation: hideButton 300ms ease-in-out;
 }
 
-.left-button, .right-button {
+.button-container__scroll {
     height: 40px;
     width: 40px;
     margin: 0 20px;
     border-radius: 20px;
     border: 1px solid #000;
+    opacity: 0.3;
+    animation: showButton 300ms ease-in-out;
+}
+
+.button-container__scroll_disabled {
+    opacity: 0;
+    display: none;
+    animation: hideButton 300ms ease-in-out;
+}
+
+footer {
+    height: 80px;
+    background-color: #000;
 }
 
 @keyframes moveLeft {

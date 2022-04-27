@@ -20,13 +20,14 @@ document.addEventListener('DOMContentLoaded', (e) => {
         filmTape.style.removeProperty('width');
         width = 80;
         filmTape.classList.toggle('film-tape_active');
+        document.querySelectorAll('.button-container__scroll').forEach((item)=> item.classList.toggle('button-container__scroll_disabled'));
         if (buttonTrigger == 0) {
 
             setTimeout(() => openButton.classList.toggle('button-hidden'), 300);
             setTimeout(() => openButton.innerHTML = "Close", 180)
             openButton.classList.toggle('button-hidden');
             for (i = 1; i < 23; i++){
-                filmShots.innerHTML += `<img class="film-shot" src="/img/photo/1/${i}.jpg">`
+                filmShots.innerHTML += `<img class="film-shot shot_${i}" src="/img/photo/1/${i}-n.png">`
             }
             buttonTrigger = 1;
 
